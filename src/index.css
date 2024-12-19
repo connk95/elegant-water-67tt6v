@@ -3,8 +3,8 @@ body,
 #root {
   height: 100%;
   width: 100%;
-  opacity: 0.8;
-  background-image: radial-gradient(black 0.5px, white 0.5px);
+  opacity: 1;
+  background-image: radial-gradient(rgb(100, 100, 100) 0.5px, white 0.5px);
   background-size: 20px 20px;
   z-index: -1;
 }
@@ -40,12 +40,27 @@ body {
   width: 100%;
   background-color: black;
   margin: 0;
+  margin-bottom: 3vh;
   height: 10vh;
-  z-index: 1000;
+  z-index: 10000;
   display: flex;
+  opacity: 1;
 }
 
 .header > h3 {
+  position: absolute;
+  top: -10px;
   margin: 0;
+  margin-left: 2vw;
+  color: white;
+  font-size: 70px;
+}
+
+p {
+
+}
+
+button {
+  background-color: black;
   color: white;
 }

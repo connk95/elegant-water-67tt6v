@@ -21,7 +21,7 @@ export default function App() {
   };
 
   return (
-    <div class="main">
+    <div>
       <div className="header">
         <h3>Website Title</h3>
       </div>
@@ -34,6 +34,7 @@ export default function App() {
           repellendus voluptatem vero at labore eligendi mollitia quaerat in
           delectus! Quis.
         </p>
+        <button>Button</button>
       </div>
       <div className="bottom-right">
         <h2>subtitle</h2>
@@ -43,6 +44,7 @@ export default function App() {
           repellendus voluptatem vero at labore eligendi mollitia quaerat in
           delectus! Quis.
         </p>
+        <button>Button</button>
       </div>
       <div className={styles.container}>
         <svg style={{ position: "absolute", width: 0, height: 0 }}>
