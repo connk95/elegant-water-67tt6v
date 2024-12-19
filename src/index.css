@@ -1,0 +1,51 @@
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  opacity: 0.8;
+  background-image: radial-gradient(black 0.5px, white 0.5px);
+  background-size: 20px 20px;
+  z-index: -1;
+}
+
+body {
+  font-family: system-ui;
+  margin: 0;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+.top-left {
+  z-index: 1000;
+  position: absolute;
+  width: 20vw;
+  margin-left: 10vw;
+}
+
+.bottom-right {
+  z-index: 1000;
+  position: absolute;
+  top: 300px;
+  right: 0;
+  width: 20vw;
+  margin-right: 10vw;
+}
+
+.header {
+  width: 100%;
+  background-color: black;
+  margin: 0;
+  height: 10vh;
+  z-index: 1000;
+  display: flex;
+}
+
+.header > h3 {
+  margin: 0;
+  color: white;
+}
