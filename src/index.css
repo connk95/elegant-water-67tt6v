@@ -1,6 +1,6 @@
 html,
 body,
-#root {
+#root:hover {
   height: 100%;
   width: 100%;
   opacity: 1;
@@ -9,10 +9,22 @@ body,
   z-index: -1;
 }
 
+/* body:hover {
+  filter: blur(0px);
+} */
+
+/* html,
+body,
+#root {
+  filter: blur(2px);
+} */
+
 body {
   font-family: system-ui;
   margin: 0;
   height: 300vh;
+  /* filter: blur(2px); */
+  /* transition: filter 0.3s; */
 }
 
 *,
@@ -166,25 +178,12 @@ input:checked + .slider:before {
 
 /* parallax */
 .hero-text, .top-left, .bottom-right {
-  /* position: absolute; */
   will-change: transform;
   transition: transform 0.1s ease-out;
 }
 
-.hero-text {
-  /* left: 50%;
-  top: 10rem; */
-  transform: translateX(-50%);
-  /* font-size: 3rem;
-  z-index: 1000; */
-}
-
-.top-left {
-  /* top: 20rem;
-  left: 10rem; */
-}
-
-.bottom-right {
-  /* top: 50rem;
-  right: 10rem; */
+.colour-tag {
+  pointer-events: auto;
+  cursor: pointer;
+  display: inline 
 }

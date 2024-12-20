@@ -16,19 +16,19 @@ export default function App() {
   }));
   const [ref, { left, top }] = useMeasure();
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: { pageX: number; pageY: number; }) => {
     api.start({ xy: [e.pageX - left, e.pageY - top] });
   };
 
   const chxBox = document.querySelector<HTMLInputElement>(".blob-check");
-  const blob = document.querySelector<HTMLElement>(".blob-container");
+  const blobContainer = document.querySelector<HTMLElement>(".blob-container");
   
-  if (chxBox && blob) {
+  if (chxBox && blobContainer) {
     chxBox.addEventListener("change", function () {
       if (chxBox.checked) {
-        blob.style.display = "none";
+        blobContainer.style.display = "none";
       } else {
-        blob.style.display = "block";
+        blobContainer.style.display = "block";
       }
     });
   }
@@ -58,6 +58,21 @@ export default function App() {
     // Optional: background scrolls away at the slowest speed
     document.body.style.backgroundPositionY = `-${scrollY * 0.2}px`;
   });
+
+  const blobs = document.querySelectorAll<HTMLElement>(".hooksMain > div");
+  const blue = document.querySelector<HTMLElement>(".colour-tag");
+
+  console.log(blobs);
+  
+  if (blue) {
+    blue.addEventListener("click", () => {
+      console.log("test");
+      blobs.forEach((blob) => {
+        console.log("Changing color for:", blob);
+        blob.style.setProperty("background", "blue", "important");
+      });
+    });
+  }
   
 
   return (
@@ -91,11 +106,13 @@ export default function App() {
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
           libero molestiae hic nobis ipsum culpa eveniet dolores vitae, ab
-          repellendus voluptatem vero at labore eligendi mollitia quaerat in
-          delectus! Quis.
+          repellendus voluptatem vero at <p className="colour-tag">blue</p> labore eligendi mollitia quaerat in
+          delectus! Quis. 
         </p>
         <button>Button</button>
       </div>
+
+
       <div className="blob-container">
         <svg style={{ position: "absolute", width: 0, height: 0 }}>
           <filter id="goo">
