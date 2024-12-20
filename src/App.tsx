@@ -17,13 +17,63 @@ export default function App() {
   const [ref, { left, top }] = useMeasure();
 
   const handleMouseMove = (e) => {
-    api.start({ xy: [e.clientX - left, e.clientY - top] });
+    api.start({ xy: [e.pageX - left, e.pageY - top] });
   };
+
+  const chxBox = document.querySelector<HTMLInputElement>(".blob-check");
+  const blob = document.querySelector<HTMLElement>(".blob-container");
+  
+  if (chxBox && blob) {
+    chxBox.addEventListener("change", function () {
+      if (chxBox.checked) {
+        blob.style.display = "none";
+      } else {
+        blob.style.display = "block";
+      }
+    });
+  }
+
+  document.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+  
+    const heroText = document.querySelector<HTMLElement>(".hero-text");
+    const topLeft = document.querySelector<HTMLElement>(".top-left");
+    const bottomRight = document.querySelector<HTMLElement>(".bottom-right");
+  
+    if (heroText) {
+      // Hero-text scrolls away slower than the regular speed
+      heroText.style.transform = `translateY(-${scrollY * 0.5}px)`;
+    }
+  
+    if (topLeft) {
+      // Top-left scrolls away at the regular speed
+      topLeft.style.transform = `translateY(-${scrollY}px)`;
+    }
+  
+    if (bottomRight) {
+      // Bottom-right scrolls away at the regular speed
+      bottomRight.style.transform = `translateY(-${scrollY}px)`;
+    }
+  
+    // Optional: background scrolls away at the slowest speed
+    document.body.style.backgroundPositionY = `-${scrollY * 0.2}px`;
+  });
+  
 
   return (
     <div>
       <div className="header">
         <h3>Website Title</h3>
+      </div>
+      <div className="toggle-blob">
+        <label className="switch">
+         <input type="checkbox" className="blob-check"/>
+          <span className="slider"></span>
+        </label>
+        <p>the blob</p>
+      </div>
+      <div className="hero-text">
+        <p>Hero text</p>
       </div>
       <div className="top-left">
         <h1>Main title</h1>
@@ -37,7 +87,7 @@ export default function App() {
         <button>Button</button>
       </div>
       <div className="bottom-right">
-        <h2>subtitle</h2>
+        <h2>Subtitle</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
           libero molestiae hic nobis ipsum culpa eveniet dolores vitae, ab
@@ -46,7 +96,7 @@ export default function App() {
         </p>
         <button>Button</button>
       </div>
-      <div className={styles.container}>
+      <div className="blob-container">
         <svg style={{ position: "absolute", width: 0, height: 0 }}>
           <filter id="goo">
             <feGaussianBlur
