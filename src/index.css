@@ -1,12 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&display=swap");
+
 html,
 body,
 #root:hover {
-  height: 100%;
+  height: auto;
   width: 100%;
   opacity: 1;
   background-image: radial-gradient(rgb(100, 100, 100) 0.5px, white 0.5px);
   background-size: 20px 20px;
   z-index: -1;
+  padding-bottom: 10rem;
 }
 
 /* body:hover {
@@ -22,7 +25,7 @@ body,
 body {
   font-family: system-ui;
   margin: 0;
-  height: 300vh;
+  height: 100%;
   /* filter: blur(2px); */
   /* transition: filter 0.3s; */
 }
@@ -33,38 +36,53 @@ body {
   box-sizing: border-box;
 }
 
-.top-left {
+.chivo {
+  font-family: "Chivo", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.content-box {
   z-index: 1000;
   position: absolute;
   width: 20rem;
+  background: white;
+  box-shadow: black 0px 0px 0px 2px, black 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  padding: 20px;
+  filter: blur(2px);
+}
+
+.content-box:hover {
+  filter: blur(0px);
+  transition: filter 0.3s;
+}
+
+.box-1 {
   left: 10rem;
   top: 15rem;
-  background: white;
-  box-shadow: black 0px 0px 0px 2px, black 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-  padding: 20px;
-  filter: blur(2px);
 }
 
-.top-left:hover {
-  filter: blur(0px);
-  transition: filter 0.3s;
-}
-
-.bottom-right {
-  z-index: 1000;
-  position: absolute;
+.box-2 {
   top: 30rem;
   right: 10rem;
-  width: 20rem;
-  background: white;
-  box-shadow: black 0px 0px 0px 2px, black 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-  padding: 20px;
-  filter: blur(2px);
 }
 
-.bottom-right:hover {
-  filter: blur(0px);
-  transition: filter 0.3s;
+.box-3 {
+  left: 14rem;
+  top: 52rem;
+}
+
+.box-4 {
+  top: 60rem;
+  right: 12rem;
+}
+
+.box-5 {
+  top: 40rem;
+  right: 28rem;
+  z-index: 500;
 }
 
 .header {
@@ -81,11 +99,16 @@ body {
 
 .header > h3 {
   position: absolute;
-  top: 3.5rem;
+  top: 2.25rem;
   margin: 0;
-  margin-left: 1rem;
+  margin-left: 2rem;
   color: white;
-  font-size: 5rem;
+  font-size: 6rem;
+  font-family: "Chivo", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: italic;
+  text-shadow: #adff2f 2px 2px;
 }
 
 button {
@@ -93,22 +116,31 @@ button {
   color: white;
 }
 
-h1, h2, h3, p, button {
+h1,
+h2,
+h3,
+p,
+button {
   cursor: default;
-  font-family: Consolas,monaco,monospace;
+  font-family: Consolas, monaco, monospace;
 }
 
 .hero-text {
   position: absolute;
-  right: 6rem;
+  right: 4rem;
   top: 14rem;
   z-index: 0;
+  /* width: 50rem; */
 }
 
 .hero-text > p {
-  font-size: 7rem;
-  font-weight: 800;
+  font-size: 7.2rem;
   margin: 0;
+  font-family: "Chivo", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: italic;
+  line-height: 0.7;
 }
 
 /* The switch - the box around the slider */
@@ -135,8 +167,8 @@ h1, h2, h3, p, button {
   right: 0;
   bottom: 0;
   background-color: #adff2f;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -147,8 +179,8 @@ h1, h2, h3, p, button {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
@@ -177,7 +209,8 @@ input:checked + .slider:before {
 }
 
 /* parallax */
-.hero-text, .top-left, .bottom-right {
+.hero-text,
+.content-box {
   will-change: transform;
   transition: transform 0.1s ease-out;
 }
@@ -185,5 +218,12 @@ input:checked + .slider:before {
 .colour-tag {
   pointer-events: auto;
   cursor: pointer;
-  display: inline 
+  display: inline;
 }
+
+.body-content {
+  height: 40rem;
+  z-index: 1000;
+}
+
+
