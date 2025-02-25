@@ -84,6 +84,24 @@ export default function App() {
     });
   };
 
+  const updatePos = (event: MouseEvent): void => {
+    console.log("test")
+    const x = event.clientX;
+    const y = event.clientY;
+    console.log(x, y)
+    const target = event.target as HTMLElement;
+    console.log(target.style.left, target.style.top);
+    target.style.left = `${x}px`;
+    target.style.top = `${y}px`;
+    console.log(target.style.left, target.style.top)
+  }
+  
+  const dragElements = document.querySelectorAll('.content-box');
+  
+  dragElements.forEach((element) => {
+    element.addEventListener(mouseup', (event) => updatePos(event as MouseEvent));
+  });
+
   return (
     // make body blurry when hovering over content-box
     // make header position fixed then scrolling to upper height of title text
@@ -117,6 +135,7 @@ export default function App() {
         <button>Button</button>
       </div>
       </Draggable>
+      <Draggable>
       <div className="content-box box-2">
         <h2>Subtitle</h2>
         <p>
@@ -127,6 +146,8 @@ export default function App() {
         </p>
         <button>Button</button>
       </div>
+      </Draggable>
+      <Draggable>
       <div className="content-box box-3">
         <h2>Subtitle</h2>
         <p>
@@ -137,6 +158,8 @@ export default function App() {
         </p>
         <button>Button</button>
       </div>
+      </Draggable>
+      <Draggable>
       <div className="content-box box-4">
         <h2>Subtitle</h2>
         <p>
@@ -147,6 +170,8 @@ export default function App() {
         </p>
         <button>Button</button>
       </div>
+      </Draggable>
+      <Draggable>
       <div className="content-box background-box box-5">
         <h2>Subtitle</h2>
         <p>
@@ -157,6 +182,7 @@ export default function App() {
         </p>
         <button>Button</button>
       </div>
+      </Draggable>
 
       <div className="blob-container">
         <svg style={{ position: "absolute", width: 0, height: 0 }}>
@@ -188,3 +214,5 @@ export default function App() {
     </div>
   );
 }
+
+
