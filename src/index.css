@@ -44,7 +44,6 @@ body {
 }
 
 .content-box {
-  z-index: 1000;
   position: absolute;
   width: 20rem;
   background: white;
@@ -61,28 +60,27 @@ body {
 
 .box-1 {
   left: 10rem;
-  top: 15rem;
+  top: 10rem;
 }
 
 .box-2 {
-  top: 30rem;
-  right: 10rem;
+  top: 20rem;
+  left: 42rem;
 }
 
 .box-3 {
-  left: 14rem;
-  top: 52rem;
+  left: 60rem;
+  top: 26rem;
 }
 
 .box-4 {
-  top: 60rem;
-  right: 12rem;
+  top: 50rem;
+  left: 12rem;
 }
 
 .box-5 {
-  top: 40rem;
-  right: 28rem;
-  z-index: 500;
+  top: 52rem;
+  left: 48rem;
 }
 
 .header {
@@ -127,9 +125,8 @@ button {
 
 .hero-text {
   position: absolute;
-  right: 4rem;
-  top: 14rem;
-  z-index: 0;
+  left: 55rem;
+  top: 6rem;
   /* width: 50rem; */
 }
 
@@ -209,11 +206,11 @@ input:checked + .slider:before {
 }
 
 /* parallax */
-.hero-text,
+/* .hero-text,
 .content-box {
   will-change: transform;
   transition: transform 0.1s ease-out;
-}
+} */
 
 .colour-tag {
   pointer-events: auto;
@@ -228,5 +225,11 @@ input:checked + .slider:before {
 
 .parallax-layer {
   position: absolute;
+  z-index: 0;
+}
+
+.parallax-box {
+  position: absolute;
   z-index: 1000;
 }
+

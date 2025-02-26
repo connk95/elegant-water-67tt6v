@@ -105,6 +105,22 @@ export default function App() {
   //   element.addEventListener("mouseup", (event) => updatePos(event as MouseEvent));
   // });
 
+  const parallaxBoxes = document.querySelectorAll<HTMLElement>(".parallax-box");
+  let topPosition = 1000;
+  
+  const updatePosition = (event: MouseEvent) => {
+    topPosition++;
+    const target = event.currentTarget as HTMLElement; 
+    target.style.zIndex = topPosition.toString();
+  };
+  
+  parallaxBoxes.forEach((box, index) => {
+    box.addEventListener("mousedown", updatePosition);
+    // box speed should be 0.1 * index (or wahetever modifier)
+    // most recently clicked box should be popped and pushed so that it has highest speed (index)
+    // this allows upper items to have more parallax and appear closer to user
+  });  
+
   return (    
     <ParallaxProvider>
       <div className="header">
@@ -117,13 +133,14 @@ export default function App() {
         </label>
         <p>the blob</p>
       </div>
+      <Parallax speed={5} className="parallax-layer">
       <div className="hero-text">
         <p>
           HERO<br></br>TEXT
         </p>
       </div>
-      <div className="parallax-layer">
-      <Parallax speed={10}>
+      </Parallax>
+      <Parallax speed={10} className="parallax-box">
       <Draggable>
       <div className="content-box box-1">
         <h1>Experimental site</h1>
@@ -138,7 +155,7 @@ export default function App() {
       </div>
       </Draggable>
       </Parallax>
-      </div>
+      <Parallax speed={10} className="parallax-box">
       <Draggable>
       <div className="content-box box-2">
         <h2>Subtitle</h2>
@@ -151,6 +168,8 @@ export default function App() {
         <button>Button</button>
       </div>
       </Draggable>
+      </Parallax>
+      <Parallax speed={10} className="parallax-box">
       <Draggable>
       <div className="content-box box-3">
         <h2>Subtitle</h2>
@@ -163,6 +182,8 @@ export default function App() {
         <button>Button</button>
       </div>
       </Draggable>
+      </Parallax>
+      <Parallax speed={10} className="parallax-box">
       <Draggable>
       <div className="content-box box-4">
         <h2>Subtitle</h2>
@@ -175,6 +196,8 @@ export default function App() {
         <button>Button</button>
       </div>
       </Draggable>
+      </Parallax>
+      <Parallax speed={10} className="parallax-box">
       <Draggable>
       <div className="content-box background-box box-5">
         <h2>Subtitle</h2>
@@ -187,7 +210,7 @@ export default function App() {
         <button>Button</button>
       </div>
       </Draggable>
-
+      </Parallax>
       <div className="blob-container">
         <svg style={{ position: "absolute", width: 0, height: 0 }}>
           <filter id="goo">
