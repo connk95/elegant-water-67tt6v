@@ -226,4 +226,7 @@ input:checked + .slider:before {
   z-index: 1000;
 }
 
-
+.parallax-layer {
+  position: absolute;
+  z-index: 1000;
+}

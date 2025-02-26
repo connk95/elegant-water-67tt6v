@@ -5,6 +5,9 @@ import Draggable from 'react-draggable';
 
 import styles from "./styles.module.css";
 import { useEffect } from "react";
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
+
+
 
 const fast = { tension: 1200, friction: 40 };
 const slow = { mass: 10, tension: 200, friction: 50 };
@@ -35,41 +38,41 @@ export default function App() {
     });
   }
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollY = window.scrollY;
 
-      const heroText = document.querySelector<HTMLElement>(".hero-text");
-      const contentBoxes =
-        document.querySelectorAll<HTMLElement>(".content-box");
-      const backgroundBoxes =
-        document.querySelectorAll<HTMLElement>(".background-box");
+  //     const heroText = document.querySelector<HTMLElement>(".hero-text");
+  //     const contentBoxes =
+  //       document.querySelectorAll<HTMLElement>(".content-box");
+  //     const backgroundBoxes =
+  //       document.querySelectorAll<HTMLElement>(".background-box");
 
-      if (heroText) {
-        heroText.style.transform = `translateY(-${scrollY * 0.5}px)`;
-      }
+  //     if (heroText) {
+  //       heroText.style.transform = `translateY(-${scrollY * 0.5}px)`;
+  //     }
 
-      if (contentBoxes) {
-        contentBoxes.forEach((contentBox) => {
-          contentBox.style.transform = `translateY(-${scrollY}px)`;
-        });
-      }
+  //     if (contentBoxes) {
+  //       contentBoxes.forEach((contentBox) => {
+  //         contentBox.style.transform = `translateY(-${scrollY}px)`;
+  //       });
+  //     }
 
-      if (backgroundBoxes) {
-        backgroundBoxes.forEach((backgroundBox) => {
-          backgroundBox.style.transform = `translateY(-${scrollY * 0.8}px)`;
-        });
-      }
+  //     if (backgroundBoxes) {
+  //       backgroundBoxes.forEach((backgroundBox) => {
+  //         backgroundBox.style.transform = `translateY(-${scrollY * 0.8}px)`;
+  //       });
+  //     }
 
-      document.body.style.backgroundPositionY = `-${scrollY * 0.2}px`;
-    };
+  //     document.body.style.backgroundPositionY = `-${scrollY * 0.2}px`;
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   const blobs = document.querySelectorAll<HTMLElement>(".hooksMain > div");
   const blue = document.querySelector<HTMLElement>(".colour-tag");
@@ -84,32 +87,29 @@ export default function App() {
     });
   };
 
-  const updatePos = (event: MouseEvent): void => {
-    console.log("test")
-    const x = event.clientX;
-    const y = event.clientY;
-    console.log(x, y)
-    const target = event.target as HTMLElement;
-    console.log(target.style.left, target.style.top);
-    target.style.left = `${x}px`;
-    target.style.top = `${y}px`;
-    console.log(target.style.left, target.style.top)
-  }
+  // const updatePos = (event: MouseEvent): void => {
+  //   console.log("test")
+  //   const x = event.clientX;
+  //   const y = event.clientY;
+  //   console.log(x, y)
+  //   const target = event.target as HTMLElement;
+  //   console.log(target.style.left, target.style.top);
+  //   target.style.left = `${x}px`;
+  //   target.style.top = `${y}px`;
+  //   console.log(target.style.left, target.style.top)
+  // }
   
-  const dragElements = document.querySelectorAll('.content-box');
+  // const dragElements = document.querySelectorAll('.content-box');
   
-  dragElements.forEach((element) => {
-    element.addEventListener(mouseup', (event) => updatePos(event as MouseEvent));
-  });
+  // dragElements.forEach((element) => {
+  //   element.addEventListener("mouseup", (event) => updatePos(event as MouseEvent));
+  // });
 
-  return (
-    // make body blurry when hovering over content-box
-    // make header position fixed then scrolling to upper height of title text
-    
-    <div className="mover">
+  return (    
+    <ParallaxProvider>
       <div className="header">
-      <h3>WEBSITE TITLE</h3>
-    </div>
+        <h3>WEBSITE TITLE</h3>
+      </div>
       <div className="toggle-blob">
         <label className="switch">
           <input type="checkbox" className="blob-check" />
@@ -122,6 +122,8 @@ export default function App() {
           HERO<br></br>TEXT
         </p>
       </div>
+      <div className="parallax-layer">
+      <Parallax speed={10}>
       <Draggable>
       <div className="content-box box-1">
         <h1>Experimental site</h1>
@@ -135,6 +137,8 @@ export default function App() {
         <button>Button</button>
       </div>
       </Draggable>
+      </Parallax>
+      </div>
       <Draggable>
       <div className="content-box box-2">
         <h2>Subtitle</h2>
@@ -211,7 +215,7 @@ export default function App() {
           ))}
         </div>
       </div>
-    </div>
+    </ParallaxProvider>
   );
 }
 
