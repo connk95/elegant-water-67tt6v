@@ -2,12 +2,12 @@ import * as React from "react";
 import useMeasure from "react-use-measure";
 import { useTrail, animated } from "@react-spring/web";
 import Draggable from 'react-draggable';
+import Tree from './Tree';
+import './index.css';
 
 import styles from "./styles.module.css";
 import { useEffect } from "react";
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
-
-
 
 const fast = { tension: 1200, friction: 40 };
 const slow = { mass: 10, tension: 200, friction: 50 };
@@ -105,26 +105,58 @@ export default function App() {
   //   element.addEventListener("mouseup", (event) => updatePos(event as MouseEvent));
   // });
 
-  const parallaxBoxes = document.querySelectorAll<HTMLElement>(".parallax-box");
+  const parallaxBoxes = Array.from(document.querySelectorAll<HTMLElement>(".parallax-box"));
   let topPosition = 1000;
   
   const updatePosition = (event: MouseEvent) => {
     topPosition++;
     const target = event.currentTarget as HTMLElement; 
     target.style.zIndex = topPosition.toString();
-  };
-  
-  parallaxBoxes.forEach((box, index) => {
-    box.addEventListener("mousedown", updatePosition);
     // box speed should be 0.1 * index (or wahetever modifier)
     // most recently clicked box should be popped and pushed so that it has highest speed (index)
     // this allows upper items to have more parallax and appear closer to user
+    // use element id??
+  };
+  
+  parallaxBoxes.forEach((box) => {
+    box.addEventListener("mousedown", updatePosition);
   });  
 
   return (    
     <ParallaxProvider>
       <div className="header">
         <h3>WEBSITE TITLE</h3>
+        <div className="tree-container">
+          <Tree name="main" defaultOpen>
+            <Tree name="hello" />
+            <Tree name="subtree with children">
+              <Tree name="child 1" />
+              <Tree name="child 2" />
+              <Tree name="child 3" />
+              <Tree name="custom content">
+                <div
+                  style={{
+                    position: 'relative',
+                    width: '100%',
+                    height: 200,
+                    padding: 10,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      background: 'black',
+                      borderRadius: 5,
+                    }}
+                  />
+                </div>
+              </Tree>
+            </Tree>
+            <Tree name="world" />
+            <Tree name={<span>🙀 something something</span>} />
+          </Tree>
+        </div>
       </div>
       <div className="toggle-blob">
         <label className="switch">

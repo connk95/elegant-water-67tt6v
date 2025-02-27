@@ -12,13 +12,13 @@
   "main": "src/index.tsx",
   "dependencies": {
     "@react-spring/parallax": "^9.7.5",
-    "@react-spring/web": "*",
+    "@react-spring/web": "^9.7.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.6",
     "react-scripts": "5.0.1",
     "react-scroll-parallax": "^3.4.5",
-    "react-use-measure": "2.1.1"
+    "react-use-measure": "^2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
